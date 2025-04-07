@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraPixel - Portafolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            /* Using our chosen background gradient */
+            background: linear-gradient(to bottom, #11176b, #5c1b9a, #2d0f44, #080209);
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        #animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header - Glass Effect */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 23, 107, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(98, 55, 192, 0.2);
+            padding: 1rem 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: white;
+        }
+        
+        .action-btn {
+            background-color: rgba(98, 55, 192, 0.3);
+            border: 1px solid rgba(98, 55, 192, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+        }
+        
+        /* Common Section Styles */
+        section {
+            padding: 8rem 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #6237c0, #9266ff);
+            border-radius: 1.5px;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+        }
+        
+        p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-section {
+            padding-top: 10rem;
+        }
+        
+        .portfolio-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-card {
+            background-color: rgba(98, 55, 192, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(98, 55, 192, 0.2);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background-color: rgba(98, 55, 192, 0.2);
+            border-color: rgba(98, 55, 192, 0.4);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-card:hover .portfolio-img img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #00eeff, #9266ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .portfolio-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(98, 55, 192, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .portfolio-meta span {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-meta strong {
+            color: #9266ff;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: rgba(98, 55, 192, 0.3);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(98, 55, 192, 0.5);
+        }
+        
+        .btn-primary:hover {
+            background-color: rgba(98, 55, 192, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 6rem 0 2rem;
+            border-top: 1px solid rgba(98, 55, 192, 0.2);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 0;
+            display: inline-block;
+        }
+        
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(to right, #6237c0, #9266ff);
+            transition: width 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-links a:hover::before {
+            width: 100%;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(98, 55, 192, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Animated background */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: #9266ff;
+            box-shadow: 0 0 10px 2px rgba(146, 102, 255, 0.3);
+            animation: float 15s infinite ease-in-out;
+            z-index: 0;
+        }
+        
+        .pixel {
+            position: absolute;
+            background: #ff66d9;
+            box-shadow: 0 0 10px 2px rgba(255, 102, 217, 0.3);
+            animation: float 15s infinite ease-in-out;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(10px, 10px);
+            }
+            50% {
+                transform: translate(5px, -5px);
+            }
+            75% {
+                transform: translate(-10px, 5px);
+            }
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background-color: rgba(98, 55, 192, 0.3);
+            border: 1px solid rgba(98, 55, 192, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .mobile-menu-btn:hover {
+            background-color: rgba(98, 55, 192, 0.5);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            section {
+                padding: 6rem 0;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(17, 23, 107, 0.9);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(98, 55, 192, 0.2);
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+            }
+            
+            nav ul.visible {
+                display: flex;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 1rem 2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="animation-container"></div>
+    
+    <div class="content">
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <a href="index.html">
+                    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+                      <!-- Background -->
+                      <defs>
+                        <!-- Import Poppins font -->
+                        <style type="text/css">
+                          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap');
+                        </style>
+                        
+                        <!-- Radial gradient for background glow -->
+                        <radialGradient id="glowRadial" cx="130" cy="100" r="50" gradientUnits="userSpaceOnUse">
+                          <stop offset="0%" stop-color="rgba(146, 102, 255, 0.3)" />
+                          <stop offset="100%" stop-color="rgba(0, 238, 255, 0)" />
+                        </radialGradient>
+                        
+                        <!-- Linear gradient for Aura text -->
+                        <linearGradient id="auraGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#00eeff" />
+                          <stop offset="100%" stop-color="#9266ff" />
+                        </linearGradient>
+                        
+                        <!-- Linear gradient for Pixel text -->
+                        <linearGradient id="pixelGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#9266ff" />
+                          <stop offset="100%" stop-color="#ff66d9" />
+                        </linearGradient>
+                        
+                        <!-- Filter for glow effect -->
+                        <filter id="auraBlur" x="-50%" y="-50%" width="200%" height="200%">
+                          <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+                        </filter>
+                      </defs>
+                      
+                      <!-- Particle Effects for Aura -->
+                      <g class="aura-particles">
+                        <!-- Larger glow effect -->
+                        <circle cx="130" cy="100" r="50" fill="url(#glowRadial)" opacity="0.4" />
+                        
+                        <!-- Individual particles -->
+                        <circle cx="110" cy="80" r="2" fill="#00eeff" opacity="0.8">
+                          <animate attributeName="cy" values="80;75;80" dur="3s" repeatCount="indefinite" />
+                          <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="125" cy="90" r="1.5" fill="#9266ff" opacity="0.7">
+                          <animate attributeName="cx" values="125;128;125" dur="2.7s" repeatCount="indefinite" />
+                          <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.7s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="150" cy="85" r="2.5" fill="#00eeff" opacity="0.6">
+                          <animate attributeName="cy" values="85;82;85" dur="3.5s" repeatCount="indefinite" />
+                          <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.5s" repeatCount="indefinite" />
+                        </circle>
+                      </g>
+                      
+                      <!-- Pixel Squares for Pixel -->
+                      <g class="pixel-squares">
+                        <!-- Animated squares -->
+                        <rect x="245" y="80" width="4" height="4" rx="1" fill="#ff66d9" opacity="0.8">
+                          <animate attributeName="y" values="80;78;80" dur="2.7s" repeatCount="indefinite" />
+                          <animate attributeName="opacity" values="0.8;0.5;0.8" dur="2.7s" repeatCount="indefinite" />
+                        </rect>
+                        <rect x="260" y="85" width="3" height="3" rx="0.5" fill="#9266ff" opacity="0.7">
+                          <animate attributeName="x" values="260;263;260" dur="3.1s" repeatCount="indefinite" />
+                          <animate attributeName="opacity" values="0.7;0.4;0.7" dur="3.1s" repeatCount="indefinite" />
+                        </rect>
+                      </g>
+                      
+                      <!-- Logo Text with Poppins Typography -->
+                      <g>
+                        <!-- Aura text with glow -->
+                        <text x="130" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="600" font-size="42" fill="url(#auraGradient)">Aura</text>
+                        
+                        <!-- Vertical separator with cursor-like flashing effect - centered between words -->
+                        <rect x="200" y="75" width="2" height="40" fill="rgba(146, 102, 255, 0.8)">
+                          <animate attributeName="opacity" values="0.8;0.8;0.8;0;0;0.8" dur="1.2s" repeatCount="indefinite" />
+                        </rect>
+                        
+                        <!-- Pixel text -->
+                        <text x="270" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="700" font-size="42" fill="url(#pixelGradient)">Pixel</text>
+                        
+                        <!-- Aura glow effect -->
+                        <circle cx="130" cy="100" r="60" fill="none" filter="url(#auraBlur)" />
+                      </g>
+                    </svg>
+                </a>
+                
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#expertise">Nuestro Expertise</a></li>
+                        <li><a href="index.html#services">Servicios</a></li>
+                        <li><a href="index.html#how">Cómo lo Hacemos</a></li>
+                        <li><a href="index.html#contact">Contacto</a></li>
+                        <li><a href="portafolio.html" class="action-btn">Portafolio</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 12h18M3 6h18M3 18h18"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Portfolio Section -->
+        <section class="portfolio-section">
+            <div class="container">
+                <div class="portfolio-intro">
+                    <h1>Portafolio</h1>
+                    <p>En AuraPixel creemos que las ideas se entienden mejor cuando se viven. Aquí encontrarás una selección de proyectos que hemos diseñado y producido, fusionando creatividad, narrativa y tecnología para generar experiencias memorables.</p>
+                </div>
+                
+                <div class="portfolio-grid">
+                    <!-- Portfolio 1 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="/api/placeholder/350/250" alt="Noches Palacio">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Noches Palacio</h3>
+                            <p>Diseño de animación para sistema de hologramas de tercera dimensión, como parte de las experiencias interactivas de las Noches Palacio Magia, como parte de un homenaje a Harry Houdini, el gran escapista. Juego con sensado para atrapar pelotas.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> Estudio Vereda</div>
+                                <div><strong>Año:</strong> 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio 2 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="/api/placeholder/350/250" alt="Noches Palacio Bailemos">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Noches Palacio Bailemos y Noches Palacio Estelar</h3>
+                            <p>Diseño de experiencia para registrar a clientes bailando y posando para una cámara con robot de 6 ejes. Diseño de cabina con espejos y pantalla de led con contenido diseñado en animación para photo opportunity.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> Estudio Vereda</div>
+                                <div><strong>Año:</strong> 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio 3 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="/api/placeholder/350/250" alt="Activación City Market">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Activación City Market</h3>
+                            <p>Diseño personalizado de experiencia de activación en temporada navideña para clientes de City Market. Planeación y ejecución de giras a nivel nacional para cubrir diferentes sucursales en el interior de la república.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> City Market</div>
+                                <div><strong>Año:</strong> 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio 4 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="/api/placeholder/350/250" alt="Circuito Sombras">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Circuito Sombras</h3>
+                            <p>Para la reapertura de El Palacio de Hierro Satélite se solicitó un Interactivo con programación que simula digitalmente sombras creadas a partir del sensado de una silueta en movimiento. Integración de juego lumínico con paleta de colores.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> Estudio Vereda</div>
+                                <div><strong>Año:</strong> 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio 5 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="/api/placeholder/350/250" alt="Interactivo Autopartes">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Interactivo Autopartes</h3>
+                            <p>Stand interactivo que fungió como herramienta de venta para un distribuidor de piezas automotrices. En una pantalla se desplegaron diferentes tipos de piezas y con una selección touchless el cliente podría profundizar en descripciones más precisas.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> Dacomsa</div>
+                                <div><strong>Año:</strong> 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio 6 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="/api/placeholder/350/250" alt="L'oreal Planet Talks">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">L'oreal Planet Talks</h3>
+                            <p>Diseño museográfico que compartió datos sobre los compromisos de Grupo L'oreal para proteger al planeta. Desarrollo de un interactivo que respondía al tacto y desplegaba información novedosa sobre el impacto ambiental de los productos.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> Estudio Vereda</div>
+                                <div><strong>Año:</strong> 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="index.html#contact" class="btn btn-primary">¿Tienes un proyecto en mente? Contáctanos</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-about">
+                        <svg class="logo" style="margin-bottom: 1.5rem; height: 50px; width: auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+                          <!-- Background -->
+                          <defs>
+                            <style type="text/css">
+                              @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap');
+                            </style>
+                            <linearGradient id="auraGradient-footer" x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" stop-color="#00eeff" />
+                              <stop offset="100%" stop-color="#9266ff" />
+                            </linearGradient>
+                            <linearGradient id="pixelGradient-footer" x1="0%" y1="0%" x2="100%" y2="0%">
+                              <stop offset="0%" stop-color="#9266ff" />
+                              <stop offset="100%" stop-color="#ff66d9" />
+                            </linearGradient>
+                          </defs>
+                          <!-- Text -->
+                          <text x="130" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="600" font-size="42" fill="url(#auraGradient-footer)">Aura</text>
+                          <rect x="200" y="75" width="2" height="40" fill="rgba(146, 102, 255, 0.8)"></rect>
+                          <text x="270" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="700" font-size="42" fill="url(#pixelGradient-footer)">Pixel</text>
+                        </svg>
+                        <p>El aura de tu marca, pixel a pixel.</p>
+                    </div>
+                    
+                    <div class="footer-nav">
+                        <div class="footer-title">Navegación rápida</div>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="index.html#expertise">Nuestro Expertise</a></li>
+                            <li><a href="index.html#services">Servicios</a></li>
+                            <li><a href="index.html#how">Cómo lo Hacemos</a></li>
+                            <li><a href="index.html#contact">Contacto</a></li>
+                            <li><a href="portafolio.html">Portafolio</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <div class="footer-title">Contacto directo</div>
+                        <ul class="footer-links">
+                            <li>📧 hola@aurapixel.com.mx</li>
+                            <li>📲 WhatsApp: +52 55 5452 8348</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2025 AuraPixel. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('visible');
+                });
+            }
+            
+            // Create background particles
+            createBackgroundEffects();
+        });
+        
+        // Create animated background particles and pixels
+        function createBackgroundEffects() {
+            const container = document.getElementById('animation-container');
+            
+            // Create aura particles (circles)
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 3px and 10px
+                const size = Math.random() * 7 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Random color based on AuraPixel palette
+                const colors = ['#6237c0', '#845be8', '#9266ff', '#00eeff'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(particle);
+            }
+            
+            // Create pixel elements (squares)
+            for (let i = 0; i < 15; i++) {
+                const pixel = document.createElement('div');
+                pixel.classList.add('pixel');
+                
+                // Random size between 2px and 8px
+                const size = Math.random() * 6 + 2;
+                pixel.style.width = `${size}px`;
+                pixel.style.height = `${size}px`;
+                
+                // No border-radius for perfect squares
+                pixel.style.borderRadius = '0';
+                
+                // Random position
+                pixel.style.left = `${Math.random() * 100}%`;
+                pixel.style.top = `${Math.random() * 100}%`;
+                
+                // Random opacity
+                pixel.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                // Random animation delay
+                pixel.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Random color based on Pixel palette
+                const colors = ['#9266ff', '#ff66d9', '#6237c0'];
+                pixel.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(pixel);
+            }
+        }
+    </script>
+</body>
+</html>
