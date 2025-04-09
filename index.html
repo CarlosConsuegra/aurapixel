@@ -868,18 +868,14 @@
                         <h1>El aura de tu marca, pixel a pixel.</h1>
                         <p>Creamos experiencias creativas para marcas innovadoras. Somos un estudio especializado en proyectos a la medida, combinando arte, narrativa y tecnología para conectar emocionalmente con las audiencias y posicionar tu marca con fuerza y originalidad.</p>
                         <div class="hero-buttons">
-                            <a href="/portafolio.html" class="btn btn-primary">🎥 Ver Nuestro Trabajo</a>
+                            <a href="portafolio.html" class="btn btn-primary">🎥 Ver Nuestro Trabajo</a>
                             <a href="#contact" class="btn btn-outline">✉️ Contáctanos</a>
                         </div>
                     </div>
                     <div>
                         <div class="image-container">
                             <img src="img/hero.gif" alt="Hero Image">
-                            <div class="play-button">
-                                <svg class="play-icon" viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -1061,7 +1057,7 @@
                       </div>
                   
                       <div class="contact-item">
-                        <a href="https://wa.me/..." class="contact-link-wrapper" target="_blank">
+                        <a href="https://wa.me/5215554528348" class="contact-link-wrapper" target="_blank">
                           <div class="contact-icon">
                             <img src="img/icon-whatsapp.svg" alt="WhatsApp" width="24" height="24">
                           </div>
@@ -1072,18 +1068,28 @@
                   
                     <!-- Right side: Contact form -->
                     <div class="contact-form">
-                      <form>
-                        <div class="form-group">
-                          <input type="text" placeholder="Nombre" required>
-                        </div>
-                        <div class="form-group">
-                          <input type="email" placeholder="Correo electrónico" required>
-                        </div>
-                        <div class="form-group">
-                          <textarea placeholder="Mensaje" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-                      </form>
+                        <form id="contact-form">
+                            <div class="form-group">
+                              <input type="text" name="name" placeholder="Nombre" required>
+                            </div>
+                            <div class="form-group">
+                              <input type="email" name="email" placeholder="Correo electrónico" required>
+                            </div>
+                            <div class="form-group">
+                              <textarea name="message" placeholder="Mensaje" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                          
+                            <!-- Mensaje de éxito (inicialmente oculto) -->
+                            <p id="form-success" style="display:none; color:#00ffcc; margin-top:1rem;">
+                              ✅ ¡Mensaje enviado con éxito!
+                            </p>
+                            <!-- Mensaje de error -->
+                            <p id="form-error" style="display:none; color:#ff66d9; margin-top:1rem;">
+                              ❌ Hubo un error. Intenta de nuevo.
+                            </p>
+                          </form>
+                          
                     </div>
                   </div>
                   
@@ -1366,5 +1372,71 @@
             });
         }
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const form = document.getElementById("contact-form");
+          const messageDiv = document.getElementById("form-message");
+      
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+      
+            const formData = new FormData(form);
+      
+            try {
+              const response = await fetch(form.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+      
+              if (response.ok) {
+                messageDiv.textContent = "✅ ¡Gracias por tu mensaje! Te responderemos pronto.";
+                messageDiv.style.color = "#66ffcc";
+                form.reset();
+              } else {
+                messageDiv.textContent = "❌ Ocurrió un error al enviar el mensaje. Intenta de nuevo.";
+                messageDiv.style.color = "#ff6666";
+              }
+            } catch (error) {
+              messageDiv.textContent = "⚠️ No pudimos conectar con el servidor. Intenta más tarde.";
+              messageDiv.style.color = "#ffcc66";
+            }
+          });
+        });
+      </script>
+      
+      <script>
+        document.getElementById("contact-form").addEventListener("submit", async function (e) {
+          e.preventDefault(); // evita el envío tradicional
+      
+          const form = e.target;
+          const data = new FormData(form);
+          const successMsg = document.getElementById("form-success");
+          const errorMsg = document.getElementById("form-error");
+      
+          try {
+            const response = await fetch("https://formspree.io/f/xblgqrkq", {
+              method: "POST",
+              body: data,
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
+      
+            if (response.ok) {
+              form.reset();
+              successMsg.style.display = "block";
+              errorMsg.style.display = "none";
+            } else {
+              throw new Error("Request failed");
+            }
+          } catch (err) {
+            successMsg.style.display = "none";
+            errorMsg.style.display = "block";
+          }
+        });
+      </script>
+            
 </body>
-</html>

@@ -12,13 +12,11 @@
         }
         
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: white;
-            overflow-x: hidden;
-            /* Using our chosen background gradient */
             background: linear-gradient(to bottom, #11176b, #5c1b9a, #2d0f44, #080209);
-            position: relative;
             min-height: 100vh;
+            overflow-x: hidden;
         }
         
         #animation-container {
@@ -36,32 +34,73 @@
             z-index: 1;
         }
         
-        /* Header - Glass Effect */
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+            height: 80px;
             background-color: rgba(17, 23, 107, 0.3);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(98, 55, 192, 0.2);
-            padding: 1rem 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
             z-index: 100;
         }
         
-        .header-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+        
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 100%;
+            gap: 1rem; /* Optional: adds a little breathing room between logo and nav */
         }
         
+        .logo-text {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            line-height: 1;          /* <- NUEVO */
+            padding-top: 0px;
+            margin-right: 1rem; /* puedes ajustar este valor */
+        }
+        
+        .logo-aura {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #00eeff, #9266ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo-pixel {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #9266ff, #ff66d9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo-separator {
+            width: 3px;
+            height: 17px;
+            background-color: rgba(98, 55, 192,0);
+        }
+
         .logo {
-            height: 50px;
-            width: auto;
+            display: flex;
+            max-height: 60px;
+            margin-top: 0px; /* Adjust to 1px or 3px if needed for alignment */
         }
         
         nav ul {
@@ -73,7 +112,7 @@
         nav a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
         
@@ -84,28 +123,23 @@
         .action-btn {
             background-color: rgba(98, 55, 192, 0.3);
             border: 1px solid rgba(98, 55, 192, 0.5);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 9999px;
+            transition: all 0.3s ease;
         }
         
-        /* Common Section Styles */
+        .action-btn:hover {
+            background-color: rgba(98, 55, 192, 0.5);
+            transform: translateY(-3px);
+        }
+        
         section {
             padding: 8rem 0;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        h1, h2, h3 {
-            margin-bottom: 1.5rem;
-        }
-        
         h1 {
             font-size: 3.5rem;
-            line-height: 1.2;
+            margin-bottom: 1.5rem;
         }
         
         h2 {
@@ -126,15 +160,44 @@
             border-radius: 1.5px;
         }
         
-        h3 {
-            font-size: 1.8rem;
-        }
-        
         p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 1.1rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: rgba(98, 55, 192, 0.3);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(98, 55, 192, 0.5);
+        }
+        
+        .btn-primary:hover {
+            background-color: rgba(98, 55, 192, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            border: 1px solid rgba(98, 55, 192, 1);
+            background-color: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(98, 55, 192, 0.1);
+            transform: translateY(-3px);
         }
         
         /* Portfolio Grid */
@@ -244,23 +307,304 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
         
+        
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .card {
+            background-color: rgba(98, 55, 192, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(98, 55, 192, 0.2);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            min-width: 320px;
+            height: 450px;
+            margin: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.9);
+            position: relative;
+        }
+        
+        .card.active {
+            transform: scale(1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+        
+        .card.prev, .card.next {
+            transform: scale(0.85);
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #00eeff, #9266ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        
+        .card-meta {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .custom-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .nav-btn {
+            background-color: rgba(98, 55, 192, 0.2);
+            border: 1px solid rgba(98, 55, 192, 0.4);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background-color: rgba(98, 55, 192, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .nav-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: white;
+            stroke-width: 2;
+        }
+        
+        /* How Section */
+        .timeline {
+            position: relative;
+            margin-top: 5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 30%;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .timeline-point {
+            width: 60px;
+            height: 60px;
+            background-color: #6237c0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(98, 55, 192, 0.5);
+        }
+        
+        .timeline-item:hover .timeline-point {
+            background-color: #9266ff;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(146, 102, 255, 0.7);
+        }
+        
+        .timeline-content {
+            background-color: rgba(98, 55, 192, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(98, 55, 192, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .timeline-item:hover .timeline-content {
+            background-color: rgba(98, 55, 192, 0.2);
+            border-color: rgba(98, 55, 192, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+
+        @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+        }
+
+        .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        }
+
+        .contact-link-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: white;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1;
+        transition: transform 0.2s;
+        }
+
+        .contact-link-wrapper:hover {
+            transform: translateX(4px);
+            text-decoration: underline;
+        }
+
+        .contact-label {
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link-wrapper:hover .contact-icon {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .contact-form {
+            background-color: rgba(98, 55, 192, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(98, 55, 192, 0.2);
+            border-radius: 1rem;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        .form-group {
+        margin-bottom: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+        width: 100%;
+        background-color: rgba(98, 55, 192, 0.15);
+        border: 1px solid rgba(98, 55, 192, 0.3);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        color: white;
+        font-family: inherit;
+        transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+        border-color: rgba(146, 102, 255, 0.8);
+        outline: none;
+        }
+
+        .contact-form textarea {
+        resize: vertical;
+        min-height: 150px;
+        }
+
+        
         /* Footer */
         footer {
-            padding: 6rem 0 2rem;
+            padding: 4rem 0 1.5rem; /* Reduced from 6rem 0 2rem */
             border-top: 1px solid rgba(98, 55, 192, 0.2);
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 4rem;
+            gap: 2rem; /* Reduced from 3rem */
+            margin-bottom: 2.5rem; /* Reduced from 4rem */
         }
         
         .footer-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* Reduced from 1.2rem */
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem; /* Reduced from 1.5rem */
         }
         
         .footer-links {
@@ -268,7 +612,7 @@
         }
         
         .footer-links li {
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem; /* Reduced from 1rem */
         }
         
         .footer-links a {
@@ -308,14 +652,16 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
-        /* Animated background */
+        /* Animated background - Particles & Pixels */
         .particle {
             position: absolute;
             border-radius: 50%;
             background: #9266ff;
             box-shadow: 0 0 10px 2px rgba(146, 102, 255, 0.3);
             animation: float 15s infinite ease-in-out;
-            z-index: 0;
+            z-index: var(--z-index, 0);
+            will-change: transform;
+            transform: translateZ(0);
         }
         
         .pixel {
@@ -323,7 +669,9 @@
             background: #ff66d9;
             box-shadow: 0 0 10px 2px rgba(255, 102, 217, 0.3);
             animation: float 15s infinite ease-in-out;
-            z-index: 0;
+            z-index: var(--z-index, 0);
+            will-change: transform;
+            transform: translateZ(0);
         }
         
         @keyframes float {
@@ -341,53 +689,29 @@
             }
         }
         
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
-            display: none;
-            background-color: rgba(98, 55, 192, 0.3);
-            border: 1px solid rgba(98, 55, 192, 0.5);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu-btn svg {
-            width: 24px;
-            height: 24px;
-            stroke: white;
-            stroke-width: 2;
-            fill: none;
-        }
-        
-        .mobile-menu-btn:hover {
-            background-color: rgba(98, 55, 192, 0.5);
-        }
-        
-        /* Responsive Design */
         @media (max-width: 992px) {
-            section {
-                padding: 6rem 0;
+            .hero-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
             
-            h1 {
-                font-size: 3rem;
+            .expertise-grid {
+                grid-template-columns: 1fr;
             }
             
-            h2 {
-                font-size: 2.2rem;
+            .timeline {
+                flex-direction: column;
+                gap: 3rem;
+                align-items: center;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                max-width: 450px;
             }
             
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
-            }
-            
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
         }
         
@@ -424,21 +748,57 @@
                 display: flex;
             }
             
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+            .contact-link-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                text-decoration: none;
+                color: white;
+                font-family: inherit;
+                font-weight: 500;
+                font-size: 1rem;
+                line-height: 1;
+                transition: transform 0.2s;
             }
+
+            .contact-link-wrapper:hover {
+                transform: translateX(3px);
+                text-decoration: underline;
+            }
+
+            .contact-label {
+                margin: 0;
+                font-size: 1rem;
+                font-family: inherit;
+                font-weight: 500;
+            }
+
+            .contact-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(255, 255, 255, 0.08);
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
+
+            .footer-logo a {
+  font-size: 2rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer-logo a {
+    font-size: 2.5rem;
+  }
+}
+
         }
     </style>
 </head>
@@ -448,109 +808,30 @@
     <div class="content">
         <!-- Header -->
         <header>
-            <div class="header-container">
-                <a href="index.html">
-                    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
-                      <!-- Background -->
-                      <defs>
-                        <!-- Import Poppins font -->
-                        <style type="text/css">
-                          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap');
-                        </style>
-                        
-                        <!-- Radial gradient for background glow -->
-                        <radialGradient id="glowRadial" cx="130" cy="100" r="50" gradientUnits="userSpaceOnUse">
-                          <stop offset="0%" stop-color="rgba(146, 102, 255, 0.3)" />
-                          <stop offset="100%" stop-color="rgba(0, 238, 255, 0)" />
-                        </radialGradient>
-                        
-                        <!-- Linear gradient for Aura text -->
-                        <linearGradient id="auraGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stop-color="#00eeff" />
-                          <stop offset="100%" stop-color="#9266ff" />
-                        </linearGradient>
-                        
-                        <!-- Linear gradient for Pixel text -->
-                        <linearGradient id="pixelGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stop-color="#9266ff" />
-                          <stop offset="100%" stop-color="#ff66d9" />
-                        </linearGradient>
-                        
-                        <!-- Filter for glow effect -->
-                        <filter id="auraBlur" x="-50%" y="-50%" width="200%" height="200%">
-                          <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-                        </filter>
-                      </defs>
-                      
-                      <!-- Particle Effects for Aura -->
-                      <g class="aura-particles">
-                        <!-- Larger glow effect -->
-                        <circle cx="130" cy="100" r="50" fill="url(#glowRadial)" opacity="0.4" />
-                        
-                        <!-- Individual particles -->
-                        <circle cx="110" cy="80" r="2" fill="#00eeff" opacity="0.8">
-                          <animate attributeName="cy" values="80;75;80" dur="3s" repeatCount="indefinite" />
-                          <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite" />
-                        </circle>
-                        <circle cx="125" cy="90" r="1.5" fill="#9266ff" opacity="0.7">
-                          <animate attributeName="cx" values="125;128;125" dur="2.7s" repeatCount="indefinite" />
-                          <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.7s" repeatCount="indefinite" />
-                        </circle>
-                        <circle cx="150" cy="85" r="2.5" fill="#00eeff" opacity="0.6">
-                          <animate attributeName="cy" values="85;82;85" dur="3.5s" repeatCount="indefinite" />
-                          <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.5s" repeatCount="indefinite" />
-                        </circle>
-                      </g>
-                      
-                      <!-- Pixel Squares for Pixel -->
-                      <g class="pixel-squares">
-                        <!-- Animated squares -->
-                        <rect x="245" y="80" width="4" height="4" rx="1" fill="#ff66d9" opacity="0.8">
-                          <animate attributeName="y" values="80;78;80" dur="2.7s" repeatCount="indefinite" />
-                          <animate attributeName="opacity" values="0.8;0.5;0.8" dur="2.7s" repeatCount="indefinite" />
-                        </rect>
-                        <rect x="260" y="85" width="3" height="3" rx="0.5" fill="#9266ff" opacity="0.7">
-                          <animate attributeName="x" values="260;263;260" dur="3.1s" repeatCount="indefinite" />
-                          <animate attributeName="opacity" values="0.7;0.4;0.7" dur="3.1s" repeatCount="indefinite" />
-                        </rect>
-                      </g>
-                      
-                      <!-- Logo Text with Poppins Typography -->
-                      <g>
-                        <!-- Aura text with glow -->
-                        <text x="130" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="600" font-size="42" fill="url(#auraGradient)">Aura</text>
-                        
-                        <!-- Vertical separator with cursor-like flashing effect - centered between words -->
-                        <rect x="200" y="75" width="2" height="40" fill="rgba(146, 102, 255, 0.8)">
-                          <animate attributeName="opacity" values="0.8;0.8;0.8;0;0;0.8" dur="1.2s" repeatCount="indefinite" />
-                        </rect>
-                        
-                        <!-- Pixel text -->
-                        <text x="270" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="700" font-size="42" fill="url(#pixelGradient)">Pixel</text>
-                        
-                        <!-- Aura glow effect -->
-                        <circle cx="130" cy="100" r="60" fill="none" filter="url(#auraBlur)" />
-                      </g>
-                    </svg>
-                </a>
-                
+            <div class="container">
+              <div class="header-container">
+          
+                <div class="logo-text">
+                    <span class="logo-aura">Aura</span>
+                    <span class="logo-separator">|</span>
+                    <span class="logo-pixel">Pixel</span>
+                </div>
+          
                 <nav>
-                    <ul id="nav-menu">
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="index.html#expertise">Nuestro Expertise</a></li>
-                        <li><a href="index.html#services">Servicios</a></li>
-                        <li><a href="index.html#how">Cómo lo Hacemos</a></li>
-                        <li><a href="index.html#contact">Contacto</a></li>
-                        <li><a href="portafolio.html" class="action-btn">Portafolio</a></li>
-                    </ul>
+                  <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#expertise">Nuestro Expertise</a></li>
+                    <li><a href="index.html#services">Servicios</a></li>
+                    <li><a href="index.html#how">Cómo lo Hacemos</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
+                    <li><a href="#contact" class="action-btn">Agenda una cita</a></li>
+                  </ul>
                 </nav>
-                <button class="mobile-menu-btn" id="mobile-menu-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 12h18M3 6h18M3 18h18"></path>
-                    </svg>
-                </button>
+          
+              </div>
             </div>
-        </header>
+          </header>
+          
         
         <!-- Portfolio Section -->
         <section class="portfolio-section">
@@ -564,14 +845,13 @@
                     <!-- Portfolio 1 -->
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="/api/placeholder/350/250" alt="Noches Palacio">
+                            <img src="img/noches-palacio.png" alt="Noches Palacio">
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">Noches Palacio</h3>
                             <p>Diseño de animación para sistema de hologramas de tercera dimensión, como parte de las experiencias interactivas de las Noches Palacio Magia, como parte de un homenaje a Harry Houdini, el gran escapista. Juego con sensado para atrapar pelotas.</p>
                             <div class="portfolio-meta">
                                 <div><strong>Cliente:</strong> Estudio Vereda</div>
-                                <div><strong>Año:</strong> 2023</div>
                             </div>
                         </div>
                     </div>
@@ -579,14 +859,13 @@
                     <!-- Portfolio 2 -->
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="/api/placeholder/350/250" alt="Noches Palacio Bailemos">
+                            <img src="img/palacio_estelar.jpeg" alt="Noches Palacio Bailemos">
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">Noches Palacio Bailemos y Noches Palacio Estelar</h3>
                             <p>Diseño de experiencia para registrar a clientes bailando y posando para una cámara con robot de 6 ejes. Diseño de cabina con espejos y pantalla de led con contenido diseñado en animación para photo opportunity.</p>
                             <div class="portfolio-meta">
                                 <div><strong>Cliente:</strong> Estudio Vereda</div>
-                                <div><strong>Año:</strong> 2024</div>
                             </div>
                         </div>
                     </div>
@@ -594,14 +873,13 @@
                     <!-- Portfolio 3 -->
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="/api/placeholder/350/250" alt="Activación City Market">
+                            <img src="img/citymarket.jpeg" alt="Activación City Market">
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">Activación City Market</h3>
                             <p>Diseño personalizado de experiencia de activación en temporada navideña para clientes de City Market. Planeación y ejecución de giras a nivel nacional para cubrir diferentes sucursales en el interior de la república.</p>
                             <div class="portfolio-meta">
                                 <div><strong>Cliente:</strong> City Market</div>
-                                <div><strong>Año:</strong> 2024</div>
                             </div>
                         </div>
                     </div>
@@ -609,14 +887,13 @@
                     <!-- Portfolio 4 -->
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="/api/placeholder/350/250" alt="Circuito Sombras">
+                            <img src="img/sombras.jpeg" alt="Circuito Sombras">
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">Circuito Sombras</h3>
                             <p>Para la reapertura de El Palacio de Hierro Satélite se solicitó un Interactivo con programación que simula digitalmente sombras creadas a partir del sensado de una silueta en movimiento. Integración de juego lumínico con paleta de colores.</p>
                             <div class="portfolio-meta">
                                 <div><strong>Cliente:</strong> Estudio Vereda</div>
-                                <div><strong>Año:</strong> 2023</div>
                             </div>
                         </div>
                     </div>
@@ -624,14 +901,13 @@
                     <!-- Portfolio 5 -->
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="/api/placeholder/350/250" alt="Interactivo Autopartes">
+                            <img src="img/dacomsa.png" alt="Interactivo Autopartes">
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">Interactivo Autopartes</h3>
                             <p>Stand interactivo que fungió como herramienta de venta para un distribuidor de piezas automotrices. En una pantalla se desplegaron diferentes tipos de piezas y con una selección touchless el cliente podría profundizar en descripciones más precisas.</p>
                             <div class="portfolio-meta">
                                 <div><strong>Cliente:</strong> Dacomsa</div>
-                                <div><strong>Año:</strong> 2023</div>
                             </div>
                         </div>
                     </div>
@@ -639,14 +915,13 @@
                     <!-- Portfolio 6 -->
                     <div class="portfolio-card">
                         <div class="portfolio-img">
-                            <img src="/api/placeholder/350/250" alt="L'oreal Planet Talks">
+                            <img src="img/loreal.jpeg" alt="L'oreal Planet Talks">
                         </div>
                         <div class="portfolio-content">
                             <h3 class="portfolio-title">L'oreal Planet Talks</h3>
                             <p>Diseño museográfico que compartió datos sobre los compromisos de Grupo L'oreal para proteger al planeta. Desarrollo de un interactivo que respondía al tacto y desplegaba información novedosa sobre el impacto ambiental de los productos.</p>
                             <div class="portfolio-meta">
                                 <div><strong>Cliente:</strong> Estudio Vereda</div>
-                                <div><strong>Año:</strong> 2024</div>
                             </div>
                         </div>
                     </div>
@@ -662,31 +937,29 @@
         <footer>
             <div class="container">
                 <div class="footer-grid">
-                    <div class="footer-about">
-                        <svg class="logo" style="margin-bottom: 1.5rem; height: 50px; width: auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
-                          <!-- Background -->
-                          <defs>
-                            <style type="text/css">
-                              @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap');
-                            </style>
-                            <linearGradient id="auraGradient-footer" x1="0%" y1="0%" x2="100%" y2="0%">
-                              <stop offset="0%" stop-color="#00eeff" />
-                              <stop offset="100%" stop-color="#9266ff" />
-                            </linearGradient>
-                            <linearGradient id="pixelGradient-footer" x1="0%" y1="0%" x2="100%" y2="0%">
-                              <stop offset="0%" stop-color="#9266ff" />
-                              <stop offset="100%" stop-color="#ff66d9" />
-                            </linearGradient>
-                          </defs>
-                          <!-- Text -->
-                          <text x="130" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="600" font-size="42" fill="url(#auraGradient-footer)">Aura</text>
-                          <rect x="200" y="75" width="2" height="40" fill="rgba(146, 102, 255, 0.8)"></rect>
-                          <text x="270" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="700" font-size="42" fill="url(#pixelGradient-footer)">Pixel</text>
-                        </svg>
+                    <div>
+        <div class="logo-text" style="margin-bottom: 1.5rem;">
+            <svg class="footer-logo" xmlns="http://www.w3.org/2000/svg" viewBox="65 0 550 150">
+                              <defs>
+                                <linearGradient id="auraGradient-footer" x1="0%" y1="0%" x2="100%" y2="0%">
+                                  <stop offset="0%" stop-color="#00eeff" />
+                                  <stop offset="100%" stop-color="#9266ff" />
+                                </linearGradient>
+                                <linearGradient id="pixelGradient-footer" x1="0%" y1="0%" x2="100%" y2="0%">
+                                  <stop offset="0%" stop-color="#9266ff" />
+                                  <stop offset="100%" stop-color="#ff66d9" />
+                                </linearGradient>
+                              </defs>
+                              <!-- Text -->
+                              <text x="130" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="600" font-size="42" fill="url(#auraGradient-footer)">Aura</text>
+                              <rect x="200" y="75" width="2" height="40" fill="rgba(146, 102, 255, 0.8)"></rect>
+                              <text x="270" y="108" text-anchor="middle" font-family="'Poppins', sans-serif" font-weight="700" font-size="42" fill="url(#pixelGradient-footer)">Pixel</text>
+                            </svg>
+                        </div>
                         <p>El aura de tu marca, pixel a pixel.</p>
                     </div>
                     
-                    <div class="footer-nav">
+                    <div>
                         <div class="footer-title">Navegación rápida</div>
                         <ul class="footer-links">
                             <li><a href="index.html">Inicio</a></li>
@@ -694,17 +967,16 @@
                             <li><a href="index.html#services">Servicios</a></li>
                             <li><a href="index.html#how">Cómo lo Hacemos</a></li>
                             <li><a href="index.html#contact">Contacto</a></li>
-                            <li><a href="portafolio.html">Portafolio</a></li>
                         </ul>
                     </div>
                     
-                    <div class="footer-contact">
+                    <div>
                         <div class="footer-title">Contacto directo</div>
                         <ul class="footer-links">
-                            <li>📧 hola@aurapixel.com.mx</li>
-                            <li>📲 WhatsApp: +52 55 5452 8348</li>
+                          <li><a href="mailto:alelopestrada@gmail.com" class="footer-link">📧 Email</a></li>
+                          <li><a href="https://wa.me/5215554528348" class="footer-link" target="_blank">📲 WhatsApp</a></li>
                         </ul>
-                    </div>
+                      </div>                      
                 </div>
                 
                 <div class="copyright">
@@ -714,21 +986,17 @@
         </footer>
     </div>
     
-    <!-- Scripts -->
+    <!-- Scripts for Animations and Interactivity -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
-            const navMenu = document.getElementById('nav-menu');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    navMenu.classList.toggle('visible');
-                });
-            }
-            
-            // Create background particles
+            // Create background particles and pixels
             createBackgroundEffects();
+            
+            // Initialize services carousel
+            setupCarousel('servicios-carousel');
+            
+            // Setup parallax effect
+            setupParallax();
         });
         
         // Create animated background particles and pixels
@@ -736,7 +1004,7 @@
             const container = document.getElementById('animation-container');
             
             // Create aura particles (circles)
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 100; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
@@ -759,11 +1027,16 @@
                 const colors = ['#6237c0', '#845be8', '#9266ff', '#00eeff'];
                 particle.style.background = colors[Math.floor(Math.random() * colors.length)];
                 
+                // Parallax effect - different depths for different particles
+                let depth = Math.random() * 0.8 + 0.2; // depth factor between 0.2 and 1
+                particle.style.setProperty('--depth', depth);
+                particle.style.zIndex = Math.floor(depth * 10);
+                
                 container.appendChild(particle);
             }
             
             // Create pixel elements (squares)
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 100; i++) {
                 const pixel = document.createElement('div');
                 pixel.classList.add('pixel');
                 
@@ -789,9 +1062,217 @@
                 const colors = ['#9266ff', '#ff66d9', '#6237c0'];
                 pixel.style.background = colors[Math.floor(Math.random() * colors.length)];
                 
+                // Parallax effect - different depths for different pixels
+                let depth = Math.random() * 0.8 + 0.2; // depth factor between 0.2 and 1
+                pixel.style.setProperty('--depth', depth);
+                pixel.style.zIndex = Math.floor(depth * 10);
+                
                 container.appendChild(pixel);
             }
         }
+        
+        // Services carousel setup
+        function setupCarousel(carouselId) {
+            const carousel = document.getElementById(carouselId);
+            if (!carousel) return;
+            
+            const cards = carousel.querySelectorAll('.card');
+            let currentIndex = 0;
+            
+            // Set initial state
+            updateCarousel();
+            
+            // Find navigation buttons
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
+                updateCarousel();
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+            
+            function updateCarousel() {
+                // Reset all cards
+                cards.forEach((card, index) => {
+                    card.classList.remove('active', 'prev', 'next');
+                    
+                    if (index === currentIndex) {
+                        card.classList.add('active');
+                    } else if (index === getPrevIndex()) {
+                        card.classList.add('prev');
+                    } else if (index === getNextIndex()) {
+                        card.classList.add('next');
+                    }
+                });
+                
+                // Calculate transform position to center active card
+                const cardWidth = cards[0].offsetWidth;
+                const containerWidth = carousel.parentElement.offsetWidth;
+                const offset = (containerWidth / 2) - ((currentIndex * cardWidth) + (cardWidth / 2));
+                
+                carousel.style.transform = `translateX(${offset}px)`;
+            }
+            
+            function getPrevIndex() {
+                return (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
+            }
+            
+            function getNextIndex() {
+                return (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
+            }
+            
+            // Handle window resize
+            window.addEventListener('resize', updateCarousel);
+            
+            // Touch support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            carousel.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            carousel.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX) {
+                    // Swipe left - go to next
+                    currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
+                } else if (touchEndX > touchStartX) {
+                    // Swipe right - go to previous
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
+                }
+                updateCarousel();
+            }
+        }
+        
+        // Parallax effect for background elements
+        function setupParallax() {
+            window.addEventListener('mousemove', function(e) {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                const particles = document.querySelectorAll('.particle');
+                const pixels = document.querySelectorAll('.pixel');
+                
+                // Apply parallax to particles
+                particles.forEach(particle => {
+                    const depth = particle.style.getPropertyValue('--depth') || 0.5;
+                    const moveX = (x - 0.5) * 50 * depth;
+                    const moveY = (y - 0.5) * 50 * depth;
+                    particle.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                });
+                
+                // Apply parallax to pixels
+                pixels.forEach(pixel => {
+                    const depth = pixel.style.getPropertyValue('--depth') || 0.5;
+                    const moveX = (x - 0.5) * 70 * depth; // slightly stronger effect for pixels
+                    const moveY = (y - 0.5) * 70 * depth;
+                    pixel.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                });
+            });
+            
+            // Parallax effect on scroll
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                const particles = document.querySelectorAll('.particle');
+                const pixels = document.querySelectorAll('.pixel');
+                
+                particles.forEach(particle => {
+                    const depth = particle.style.getPropertyValue('--depth') || 0.5;
+                    const moveY = scrollPosition * 0.05 * depth;
+                    const currentTransform = particle.style.transform || '';
+                    const newTransform = currentTransform.includes('translate') 
+                        ? currentTransform.replace(/translateY\([^)]+\)/, `translateY(${moveY}px)`) 
+                        : currentTransform + ` translateY(${moveY}px)`;
+                    particle.style.transform = newTransform;
+                });
+                
+                pixels.forEach(pixel => {
+                    const depth = pixel.style.getPropertyValue('--depth') || 0.5;
+                    const moveY = scrollPosition * 0.07 * depth; // slightly stronger effect for pixels
+                    const currentTransform = pixel.style.transform || '';
+                    const newTransform = currentTransform.includes('translate') 
+                        ? currentTransform.replace(/translateY\([^)]+\)/, `translateY(${moveY}px)`) 
+                        : currentTransform + ` translateY(${moveY}px)`;
+                    pixel.style.transform = newTransform;
+                });
+            });
+        }
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const form = document.getElementById("contact-form");
+          const messageDiv = document.getElementById("form-message");
+      
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+      
+            const formData = new FormData(form);
+      
+            try {
+              const response = await fetch(form.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+      
+              if (response.ok) {
+                messageDiv.textContent = "✅ ¡Gracias por tu mensaje! Te responderemos pronto.";
+                messageDiv.style.color = "#66ffcc";
+                form.reset();
+              } else {
+                messageDiv.textContent = "❌ Ocurrió un error al enviar el mensaje. Intenta de nuevo.";
+                messageDiv.style.color = "#ff6666";
+              }
+            } catch (error) {
+              messageDiv.textContent = "⚠️ No pudimos conectar con el servidor. Intenta más tarde.";
+              messageDiv.style.color = "#ffcc66";
+            }
+          });
+        });
+      </script>
+      
+      <script>
+        document.getElementById("contact-form").addEventListener("submit", async function (e) {
+          e.preventDefault(); // evita el envío tradicional
+      
+          const form = e.target;
+          const data = new FormData(form);
+          const successMsg = document.getElementById("form-success");
+          const errorMsg = document.getElementById("form-error");
+      
+          try {
+            const response = await fetch("https://formspree.io/f/xblgqrkq", {
+              method: "POST",
+              body: data,
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
+      
+            if (response.ok) {
+              form.reset();
+              successMsg.style.display = "block";
+              errorMsg.style.display = "none";
+            } else {
+              throw new Error("Request failed");
+            }
+          } catch (err) {
+            successMsg.style.display = "none";
+            errorMsg.style.display = "block";
+          }
+        });
+      </script>
+            
 </body>
-</html>
