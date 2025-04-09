@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraPixel - El aura de tu marca, pixel a pixel</title>
+    <title>AuraPixel - Portafolio</title>
     <style>
         * {
             margin: 0;
@@ -61,17 +61,16 @@
             justify-content: space-between;
             align-items: center;
             height: 100%;
-            gap: 1rem;
-            width: 100%;
+            gap: 1rem; /* Optional: adds a little breathing room between logo and nav */
         }
         
         .logo-text {
             display: flex;
             align-items: center;
             gap: 5px;
-            line-height: 1;
+            line-height: 1;          /* <- NUEVO */
             padding-top: 0px;
-            margin-right: 1rem;
+            margin-right: 1rem; /* puedes ajustar este valor */
         }
         
         .logo-aura {
@@ -97,47 +96,13 @@
             height: 17px;
             background-color: rgba(98, 55, 192,0);
         }
-    
+
         .logo {
             display: flex;
             max-height: 60px;
-            margin-top: 0px;
-        }
-    
-        /* Hamburger Menu Styles */
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            border-radius: 5px;
-            padding: 5px;
-            gap: 6px;
-            transition: all 0.3s ease-in-out;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-        }
-    
-        .mobile-menu-btn span {
-            display: block;
-            height: 2px;
-            width: 100%;
-            background-color: white;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-    
-        .mobile-menu-btn:hover {
-            background-color: rgba(98, 55, 192, 0.3);
+            margin-top: 0px; /* Adjust to 1px or 3px if needed for alignment */
         }
         
-        /* Navigation */
         nav ul {
             display: flex;
             list-style: none;
@@ -235,140 +200,113 @@
             transform: translateY(-3px);
         }
         
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 0 6rem;
+        /* Portfolio Grid */
+        .portfolio-section {
+            padding-top: 10rem;
         }
         
-        .hero-grid {
+        .portfolio-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+        
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
         }
         
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .image-container {
-            background-color: rgba(98, 55, 192, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(98, 55, 192, 0.3);
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-        
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            opacity: 0.9;
-            transition: transform 0.3s ease;
-        }
-        
-        .image-container:hover img {
-            transform: scale(1.05);
-        }
-        
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background-color: rgba(98, 55, 192, 0.3);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(98, 55, 192, 0.5);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .play-button:hover {
-            background-color: rgba(98, 55, 192, 0.5);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        
-        .play-icon {
-            width: 24px;
-            height: 24px;
-            fill: white;
-            margin-left: 5px;
-        }
-        
-        /* Expertise Section */
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-        
-        .expertise-card {
+        .portfolio-card {
             background-color: rgba(98, 55, 192, 0.1);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(98, 55, 192, 0.2);
             border-radius: 1rem;
-            padding: 2.5rem;
-            height: 100%;
-            transition: all 0.4s ease;
-        }
-        
-        .expertise-card:hover {
-            background-color: rgba(98, 55, 192, 0.2);
-            border-color: rgba(98, 55, 192, 0.4);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-        
-        .card-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(98, 55, 192, 0.2);
-            border: 1px solid rgba(98, 55, 192, 0.3);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
         
-        .expertise-card:hover .card-icon {
-            background-color: rgba(98, 55, 192, 0.3);
-            transform: scale(1.1) rotate(-5deg);
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background-color: rgba(98, 55, 192, 0.2);
+            border-color: rgba(98, 55, 192, 0.4);
         }
         
-        .icon {
-            width: 24px;
-            height: 24px;
-            stroke: #9266ff;
-            stroke-width: 2;
-            fill: none;
-        }
-        
-        /* Services Section */
-        .carousel-container {
-            position: relative;
-            margin: 3rem auto 0;
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
             overflow: hidden;
-            padding: 2rem 0;
+            position: relative;
         }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-card:hover .portfolio-img img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #00eeff, #9266ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .portfolio-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(98, 55, 192, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .portfolio-meta span {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-meta strong {
+            color: #9266ff;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: rgba(98, 55, 192, 0.3);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(98, 55, 192, 0.5);
+        }
+        
+        .btn-primary:hover {
+            background-color: rgba(98, 55, 192, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
         
         .carousel {
             display: flex;
@@ -545,46 +483,53 @@
         
         /* Contact Section */
         .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+
+        @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
         }
-    
+        }
+
         .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
         }
-    
+
         .contact-link-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            color: white;
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 1rem;
-            line-height: 1;
-            transition: transform 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: white;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1;
+        transition: transform 0.2s;
         }
-    
+
         .contact-link-wrapper:hover {
             transform: translateX(4px);
             text-decoration: underline;
         }
-    
+
         .contact-label {
             font-size: 1rem;
             font-weight: 600;
             font-family: inherit;
         }
-    
+
         .contact-icon {
             width: 50px;
             height: 50px;
@@ -596,12 +541,12 @@
             justify-content: center;
             transition: all 0.3s ease;
         }
-    
+
         .contact-link-wrapper:hover .contact-icon {
             background-color: rgba(255, 255, 255, 0.2);
             transform: scale(1.1);
         }
-    
+
         .contact-form {
             background-color: rgba(98, 55, 192, 0.1);
             backdrop-filter: blur(10px);
@@ -613,51 +558,53 @@
             flex-direction: column;
             justify-content: center;
         }
-    
+
+
         .form-group {
-            margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
         }
-    
+
         .contact-form input,
         .contact-form textarea {
-            width: 100%;
-            background-color: rgba(98, 55, 192, 0.15);
-            border: 1px solid rgba(98, 55, 192, 0.3);
-            border-radius: 0.5rem;
-            padding: 1rem;
-            color: white;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
+        width: 100%;
+        background-color: rgba(98, 55, 192, 0.15);
+        border: 1px solid rgba(98, 55, 192, 0.3);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        color: white;
+        font-family: inherit;
+        transition: border-color 0.3s ease;
         }
-    
+
         .contact-form input:focus,
         .contact-form textarea:focus {
-            border-color: rgba(146, 102, 255, 0.8);
-            outline: none;
+        border-color: rgba(146, 102, 255, 0.8);
+        outline: none;
         }
-    
+
         .contact-form textarea {
-            resize: vertical;
-            min-height: 150px;
+        resize: vertical;
+        min-height: 150px;
         }
+
         
         /* Footer */
         footer {
-            padding: 4rem 0 1.5rem;
+            padding: 4rem 0 1.5rem; /* Reduced from 6rem 0 2rem */
             border-top: 1px solid rgba(98, 55, 192, 0.2);
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
+            gap: 2rem; /* Reduced from 3rem */
+            margin-bottom: 2.5rem; /* Reduced from 4rem */
         }
         
         .footer-title {
-            font-size: 1.1rem;
+            font-size: 1.1rem; /* Reduced from 1.2rem */
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1rem; /* Reduced from 1.5rem */
         }
         
         .footer-links {
@@ -665,7 +612,7 @@
         }
         
         .footer-links li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.75rem; /* Reduced from 1rem */
         }
         
         .footer-links a {
@@ -742,7 +689,6 @@
             }
         }
         
-        /* Media Queries */
         @media (max-width: 992px) {
             .hero-grid,
             .contact-grid {
@@ -770,35 +716,19 @@
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .mobile-menu-btn {
-                display: flex;
-            }
-            
             nav ul {
                 display: none;
-                position: fixed;
-                top: 80px;
+                position: absolute;
+                top: 100%;
                 left: 0;
                 width: 100%;
-                height: auto;
-                background-color: rgba(8, 12, 77, 0.95);
+                background-color: rgba(17, 23, 107, 0.9);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 border-top: 1px solid rgba(98, 55, 192, 0.2);
                 flex-direction: column;
-                padding: 1.5rem 0;
-                gap: 1rem;
-                z-index: 99;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-                transition: all 0.3s ease;
+                padding: 1rem 0;
+                gap: 0;
             }
             
             nav ul.visible {
@@ -807,101 +737,148 @@
             
             nav ul li {
                 width: 100%;
-                text-align: center;
             }
             
             nav ul li a {
                 display: block;
-                padding: 0.8rem 2rem;
-                font-size: 1.1rem;
-                color: rgba(255, 255, 255, 0.85);
-                transition: color 0.3s ease;
+                padding: 1rem 2rem;
             }
             
-            nav ul li a:hover {
-                color: white;
-            }
-            
-            nav ul li a.action-btn {
-                display: inline-block;
-                margin: 1rem auto;
-                padding: 0.7rem 2rem;
-                background-color: rgba(98, 55, 192, 0.4);
-                border-radius: 9999px;
-                color: white;
-                width: auto;
-                max-width: 80%;
-            }
-            
-            nav ul li a.action-btn:hover {
-                background-color: rgba(98, 55, 192, 0.6);
-                transform: translateY(-2px);
-            }
-    
-            nav ul li a[href="#"] {
-                color: white;
-            }
-            
-            /* Hamburger Menu Animation */
-            .mobile-menu-btn.active span:nth-child(1) {
-                transform: translateY(7px) rotate(45deg);
-            }
-            
-            .mobile-menu-btn.active span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .mobile-menu-btn.active span:nth-child(3) {
-                transform: translateY(-7px) rotate(-45deg);
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            
-            .hero-buttons .btn {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
+            .mobile-menu-btn {
+                display: flex;
             }
             
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-            
             .contact-link-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                text-decoration: none;
+                color: white;
+                font-family: inherit;
                 font-weight: 500;
                 font-size: 1rem;
+                line-height: 1;
+                transition: transform 0.2s;
             }
-    
+
             .contact-link-wrapper:hover {
                 transform: translateX(3px);
+                text-decoration: underline;
             }
-    
+
             .contact-label {
                 margin: 0;
+                font-size: 1rem;
+                font-family: inherit;
                 font-weight: 500;
             }
-    
+
             .contact-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(255, 255, 255, 0.08);
+                border-radius: 50%;
                 width: 40px;
                 height: 40px;
             }
-        }
-        
-        @media (min-width: 769px) {
+
             .footer-logo a {
-                font-size: 2.5rem;
-            }
-            
-            .mobile-menu-btn {
-                display: none !important;
-            }
+  font-size: 2rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer-logo a {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 1rem;
+  }
+
+  .portfolio-card {
+    margin-bottom: 2rem;
+  }
+
+  .portfolio-img img {
+    height: auto;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  header nav ul {
+    display: none;
+  }
+}
+
+
+.mobile-menu-btn {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  border: 1px solid rgba(98, 55, 192, 0.4);
+  background-color: rgba(98, 55, 192, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 110;
+}
+
+.mobile-menu-btn:hover {
+  background-color: rgba(98, 55, 192, 0.4);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  nav ul.nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(17, 23, 107, 0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(98, 55, 192, 0.2);
+    z-index: 100;
+  }
+
+  nav ul.nav-links.visible {
+    display: flex;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+}
+
         }
     </style>
 </head>
@@ -911,270 +888,147 @@
     <div class="content">
         <!-- Header -->
         <header>
-            <div class="container">
-              <div class="header-container">
-          
-                <div class="logo-text">
-                    <span class="logo-aura">Aura</span>
-                    <span class="logo-separator">|</span>
-                    <span class="logo-pixel">Pixel</span>
-                </div>
-          
-                <button class="mobile-menu-btn" id="mobile-menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
-                <nav>
-                  <ul id="main-menu">
-                    <li><a href="#expertise">Nuestro Expertise</a></li>
-                    <li><a href="#services">Servicios</a></li>
-                    <li><a href="#how">Cómo lo Hacemos</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                    <li><a href="portafolio.html">Portafolio</a></li>
-                    <li><a href="#contact" class="action-btn">Agenda una cita</a></li>
-                  </ul>
-                </nav>
-          
+          <div class="container">
+            <div class="header-container">
+        
+              <div class="logo-text">
+                <span class="logo-aura">Aura</span>
+                <span class="logo-separator">|</span>
+                <span class="logo-pixel">Pixel</span>
               </div>
+                   
+              <nav>
+                <ul class="nav-links">
+                  <li><a href="index.html">Inicio</a></li>
+                  <li><a href="index.html#expertise">Nuestro Expertise</a></li>
+                  <li><a href="index.html#services">Servicios</a></li>
+                  <li><a href="index.html#how">Cómo lo Hacemos</a></li>
+                  <li><a href="index.html#contact">Contacto</a></li>
+                  <li><a href="#contact" class="action-btn">Agenda una cita</a></li>
+                </ul>
+              </nav>
+        
+              <button class="mobile-menu-btn" aria-label="Menú">
+                ☰
+              </button>
+              
             </div>
-          </header>
+          </div>
+        </header>
+        
           
         
-        <!-- Hero Section -->
-        <section class="hero">
+        <!-- Portfolio Section -->
+        <section class="portfolio-section">
             <div class="container">
-                <div class="hero-grid">
-                    <div>
-                        <h1>El aura de tu marca, pixel a pixel.</h1>
-                        <p>Creamos experiencias creativas para marcas innovadoras. Somos un estudio especializado en proyectos a la medida, combinando arte, narrativa y tecnología para conectar emocionalmente con las audiencias y posicionar tu marca con fuerza y originalidad.</p>
-                        <div class="hero-buttons">
-                            <a href="portafolio.html" class="btn btn-primary">🎥 Ver Nuestro Trabajo</a>
-                            <a href="#contact" class="btn btn-outline">✉️ Contáctanos</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="image-container">
-                            <img src="img/hero.gif" alt="Hero Image">
-                            
-                        </div>
-                    </div>
+                <div class="portfolio-intro">
+                    <h1>Portafolio</h1>
+                    <p>En AuraPixel creemos que las ideas se entienden mejor cuando se viven. Aquí encontrarás una selección de proyectos que hemos diseñado y producido, fusionando creatividad, narrativa y tecnología para generar experiencias memorables.</p>
                 </div>
-            </div>
-        </section>
-        
-        <!-- Expertise Section -->
-        <section id="expertise" class="expertise">
-            <div class="container">
-                <h2>Nuestro Expertise</h2>
-                <p>En AuraPixel creamos experiencias a la medida que combinan arte, emoción y tecnología. Nuestro expertise se construye desde la colaboración interdisciplinaria, el pensamiento narrativo y la innovación aplicada a cada proyecto.</p>
                 
-                <div class="expertise-grid">
-                    <div class="expertise-card">
-                        <div class="card-icon">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                <path d="M5 6.2l14 0"></path>
-                                <path d="M17 14l-5-1-5 1"></path>
-                                <path d="M12 7v3"></path>
-                            </svg>
-                        </div>
-                        <h3>Diseño de experiencias</h3>
-                        <p>Creamos conceptos únicos que conectan con las emociones, contando historias envolventes a través de medios visuales, sonoros y espaciales.</p>
-                    </div>
-                    
-                    <div class="expertise-card">
-                        <div class="card-icon">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M20 7h-3a2 2 0 0 0-2 2v1H9V9a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-1h6v1a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
-                                <path d="M8 12h8"></path>
-                                <path d="M8 16h8"></path>
-                                <rect x="2" y="14" width="4" height="4"></rect>
-                                <rect x="18" y="14" width="4" height="4"></rect>
-                            </svg>
-                        </div>
-                        <h3>Narrativa + Tecnología</h3>
-                        <p>Integramos narrativa con tecnología emergente para crear experiencias interactivas, inmersivas y memorables.</p>
-                    </div>
-                    
-                    <div class="expertise-card">
-                        <div class="card-icon">
-                            <svg class="icon" viewBox="0 0 24 24">
-                                <path d="M12 2v4"></path>
-                                <path d="M12 18v4"></path>
-                                <path d="M4.93 4.93l2.83 2.83"></path>
-                                <path d="M16.24 16.24l2.83 2.83"></path>
-                                <path d="M2 12h4"></path>
-                                <path d="M18 12h4"></path>
-                                <path d="M4.93 19.07l2.83-2.83"></path>
-                                <path d="M16.24 7.76l2.83-2.83"></path>
-                                <circle cx="12" cy="12" r="5"></circle>
-                            </svg>
-                        </div>
-                        <h3>Ejecución integral</h3>
-                        <p>Acompañamos cada proyecto de principio a fin, desde la idea hasta la entrega, cuidando cada detalle con precisión y pasión.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Services Section -->
-        <section id="services" class="services">
-            <div class="container">
-                <h2>Nuestros Servicios</h2>
-                <p>Ofrecemos soluciones creativas y tecnológicas para ayudar a las marcas a conectar con sus audiencias de manera memorable y efectiva, siempre con un enfoque personalizado y único.</p>
                 
-                <div class="carousel-container">
-                    <div class="carousel" id="servicios-carousel">
-                        <!-- Servicio 1 -->
-                        <div class="card active">
-                            <div class="card-img">
-                                <img src="img/servicios_1.png" alt="Diseño de experiencias">
-                            </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Diseño de experiencias</h3>
-                                <p class="card-text">Creamos conceptos únicos que conectan con las emociones, contando historias envolventes a través de medios visuales, sonoros y espaciales.</p>
-                                <div class="card-meta">
-                                    <span>Museografía • Escenografía • Activaciones</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Servicio 2 -->
-                        <div class="card next">
-                            <div class="card-img">
-                                <img src="img/servicios_2.png" alt="Narrativa + Tecnología">
-                            </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Narrativa + Tecnología</h3>
-                                <p class="card-text">Integramos narrativa con tecnología emergente para crear experiencias interactivas, inmersivas y memorables.</p>
-                                <div class="card-meta">
-                                    <span>VR/AR • Interfaces • IA Creativa</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Servicio 3 -->
-                        <div class="card prev">
-                            <div class="card-img">
-                                <img src="img/servicios_3.png" alt="Ejecución integral">
-                            </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Ejecución integral</h3>
-                                <p class="card-text">Acompañamos cada proyecto de principio a fin, desde la idea hasta la entrega, cuidando cada detalle con precisión y pasión.</p>
-                                <div class="card-meta">
-                                    <span>Planeación • Producción • Implementación</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="custom-nav">
-                        <div class="nav-btn prev-btn">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M15 18l-6-6 6-6" />
-                            </svg>
-                        </div>
-                        <div class="nav-btn next-btn">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M9 18l6-6-6-6" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- How We Do It Section -->
-        <section id="how" class="how">
-            <div class="container">
-                <h2>Cómo lo Hacemos</h2>
-                <p>Nuestro proceso está diseñado para transformar ideas en experiencias significativas. A través de un enfoque colaborativo y estratégico, acompañamos a nuestros clientes desde la primera chispa hasta la implementación final.</p>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-point">1</div>
-                        <div class="timeline-content">
-                            <h3>Descubrimiento</h3>
-                            <p>Escuchamos, exploramos y entendemos. Analizamos el contexto, la audiencia y los objetivos para revelar oportunidades creativas con propósito.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-point">2</div>
-                        <div class="timeline-content">
-                            <h3>Conceptualización</h3>
-                            <p>Convertimos la visión en concepto. Diseñamos experiencias únicas que combinan narrativa, diseño y tecnología de manera coherente y poderosa.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-point">3</div>
-                        <div class="timeline-content">
-                            <h3>Implementación</h3>
-                            <p>Hacemos realidad cada idea con detalle, precisión y pasión. Coordinamos producción, tecnología y talento humano para lograr una ejecución impecable.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Contacto</h2>
-                
-                <div class="contact-grid">
-                    <!-- Left side: Contact links -->
-                    <div>
-                      <div class="contact-item">
-                        <a href="mailto:ale...@gmail.com" class="contact-link-wrapper">
-                          <div class="contact-icon">
-                            <img src="img/icon-email.svg" alt="Email" width="24" height="24">
-                          </div>
-                          <span class="contact-label">Email</span>
-                        </a>
+                <div class="portfolio-grid">
+                    <!-- Portfolio 1 -->
+                    <div class="portfolio-card">
+                      <div class="portfolio-img">
+                          <img src="img/watsonx.png" alt="IBM WatsonX - Vr Experience">
                       </div>
-                  
-                      <div class="contact-item">
-                        <a href="https://wa.me/5215554528348" class="contact-link-wrapper" target="_blank">
-                          <div class="contact-icon">
-                            <img src="img/icon-whatsapp.svg" alt="WhatsApp" width="24" height="24">
+                      <div class="portfolio-content">
+                          <h3 class="portfolio-title">IBM WatsonX - Vr Experience</h3>
+                          <p>A través de una narrativa envolvente y un entorno 3D interactivo, los usuarios exploran conceptos clave como entrenamiento de modelos fundacionales, ética de la IA y automatización inteligente.</p>
+                          <div class="portfolio-meta">
+                              <div><strong>Cliente:</strong> IBM México</div>
                           </div>
-                          <span class="contact-label">WhatsApp</span>
-                        </a>
                       </div>
-                    </div>
-                  
-                    <!-- Right side: Contact form -->
-                    <div class="contact-form">
-                        <form id="contact-form">
-                            <div class="form-group">
-                              <input type="text" name="name" placeholder="Nombre" required>
-                            </div>
-                            <div class="form-group">
-                              <input type="email" name="email" placeholder="Correo electrónico" required>
-                            </div>
-                            <div class="form-group">
-                              <textarea name="message" placeholder="Mensaje" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-                          
-                            <!-- Mensaje de éxito (inicialmente oculto) -->
-                            <p id="form-success" style="display:none; color:#00ffcc; margin-top:1rem;">
-                              ✅ ¡Mensaje enviado con éxito!
-                            </p>
-                            <!-- Mensaje de error -->
-                            <p id="form-error" style="display:none; color:#ff66d9; margin-top:1rem;">
-                              ❌ Hubo un error. Intenta de nuevo.
-                            </p>
-                          </form>
-                          
-                    </div>
                   </div>
-                  
+                    
+                    <div class="portfolio-card">
+                      <div class="portfolio-img">
+                          <img src="img/noches-palacio.png" alt="Noches Palacio">
+                      </div>
+                      <div class="portfolio-content">
+                          <h3 class="portfolio-title">Noches Palacio</h3>
+                          <p>Diseño de animación para sistema de hologramas de tercera dimensión, como parte de las experiencias interactivas de las Noches Palacio Magia, como parte de un homenaje a Harry Houdini, el gran escapista. Juego con sensado para atrapar pelotas.</p>
+                          <div class="portfolio-meta">
+                              <div><strong>Cliente:</strong> Estudio Vereda</div>
+                          </div>
+                      </div>
+                  </div>
+                    
+                    <!-- Portfolio 2 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="img/palacio_estelar.jpeg" alt="Noches Palacio Bailemos">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Noches Palacio Bailemos y Noches Palacio Estelar</h3>
+                            <p>Diseño de experiencia para registrar a clientes bailando y posando para una cámara con robot de 6 ejes. Diseño de cabina con espejos y pantalla de led con contenido diseñado en animación para photo opportunity.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> Estudio Vereda</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio 3 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="img/citymarket.jpeg" alt="Activación City Market">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Activación City Market</h3>
+                            <p>Diseño personalizado de experiencia de activación en temporada navideña para clientes de City Market. Planeación y ejecución de giras a nivel nacional para cubrir diferentes sucursales en el interior de la república.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> City Market</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio 4 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="img/sombras.jpeg" alt="Circuito Sombras">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Circuito Sombras</h3>
+                            <p>Para la reapertura de El Palacio de Hierro Satélite se solicitó un Interactivo con programación que simula digitalmente sombras creadas a partir del sensado de una silueta en movimiento. Integración de juego lumínico con paleta de colores.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> Estudio Vereda</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio 5 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="img/dacomsa.png" alt="Interactivo Autopartes">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Interactivo Autopartes</h3>
+                            <p>Stand interactivo que fungió como herramienta de venta para un distribuidor de piezas automotrices. En una pantalla se desplegaron diferentes tipos de piezas y con una selección touchless el cliente podría profundizar en descripciones más precisas.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> Dacomsa</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio 6 -->
+                    <div class="portfolio-card">
+                        <div class="portfolio-img">
+                            <img src="img/loreal.jpeg" alt="L'oreal Planet Talks">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">L'oreal Planet Talks</h3>
+                            <p>Diseño museográfico que compartió datos sobre los compromisos de Grupo L'oreal para proteger al planeta. Desarrollo de un interactivo que respondía al tacto y desplegaba información novedosa sobre el impacto ambiental de los productos.</p>
+                            <div class="portfolio-meta">
+                                <div><strong>Cliente:</strong> Estudio Vereda</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="index.html#contact" class="btn btn-primary">¿Tienes un proyecto en mente? Contáctanos</a>
+                </div>
             </div>
         </section>
         
@@ -1207,12 +1061,11 @@
                     <div>
                         <div class="footer-title">Navegación rápida</div>
                         <ul class="footer-links">
-                            <li><a href="#">Inicio</a></li>
-                            <li><a href="#expertise">Nuestro Expertise</a></li>
-                            <li><a href="#services">Servicios</a></li>
-                            <li><a href="#how">Cómo lo Hacemos</a></li>
-                            <li><a href="#contact">Contacto</a></li>
-                            <li><a href="portafolio.html">Portafolio</a></li>
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="index.html#expertise">Nuestro Expertise</a></li>
+                            <li><a href="index.html#services">Servicios</a></li>
+                            <li><a href="index.html#how">Cómo lo Hacemos</a></li>
+                            <li><a href="index.html#contact">Contacto</a></li>
                         </ul>
                     </div>
                     
@@ -1521,49 +1374,4 @@
         });
       </script>
             
-
-            <!-- Mobile Menu Toggle Script -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
-        const mainMenu = document.getElementById('main-menu');
-        
-        // Toggle menu visibility when hamburger button is clicked
-        mobileMenuBtn.addEventListener('click', function() {
-            mainMenu.classList.toggle('visible');
-            mobileMenuBtn.classList.toggle('active');
-        });
-        
-        // Close mobile menu when a link is clicked
-        const menuLinks = mainMenu.querySelectorAll('a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    mainMenu.classList.remove('visible');
-                    mobileMenuBtn.classList.remove('active');
-                }
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const isClickInsideMenu = mainMenu.contains(event.target);
-            const isClickOnMenuBtn = mobileMenuBtn.contains(event.target);
-            
-            if (!isClickInsideMenu && !isClickOnMenuBtn && mainMenu.classList.contains('visible')) {
-                mainMenu.classList.remove('visible');
-                mobileMenuBtn.classList.remove('active');
-            }
-        });
-        
-        // Adjust menu visibility on window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768 && mainMenu.classList.contains('visible')) {
-                mainMenu.classList.remove('visible');
-                mobileMenuBtn.classList.remove('active');
-            }
-        });
-    });
-  </script>
 </body>
-</html>
